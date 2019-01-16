@@ -30,9 +30,6 @@ def bilinear_interpolate(img, coords: np.array) -> np.array:
   x0, y0 = int_coords
   dx, dy = coords - int_coords
 
-  # V2.
-  # f = interp2d(img)
-  # f(xcoords, ycoords)
 
   # 4 Neighour pixels
   q11 = img[y0, x0]
@@ -70,7 +67,9 @@ def process_warp(src_img, result_img: np.zeros,
 
   return None
 
-def warp_image(src_img, src_points: list,
+def warp_image(
+    src_img,
+    src_points: list,
     dest_points: list,
     dest_shape: tuple, dtype = np.uint16) -> np.ndarray:
   # Resultant image will not have an alpha channel
@@ -91,7 +90,8 @@ def warp_image(src_img, src_points: list,
 
   return result_img
 
-def triangular_affine_matrices(vertices: list,
+def triangular_affine_matrices(
+  vertices: list,
   src_points: list,
   dest_points: list) -> np.matrix:
   
